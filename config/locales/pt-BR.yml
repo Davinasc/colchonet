@@ -1,0 +1,66 @@
+pt-BR:
+  users:
+    new:
+      title: Cadastro
+    edit:
+      title: Editar Perfil
+    show:
+      title: "Perfil: %{user_name}"
+      edit: 'Editar perfil'
+      location: "Localização: %{location}"
+      bio: "Bio: %{bio}"
+    index:
+      title: Usuários
+      new: Novo Usuário
+      bio: Biografia
+      email: Email
+      full_name: Nome
+      location: Localização
+
+  rooms:
+    new:
+      title: Cadastro
+    edit:
+      title: Editar Quarto
+    show:
+      title: "Quarto: %{room_name}"
+      edit: "Editar quarto"
+      location: "Localização: %{location}"
+      description: "Descrição: %{description}"
+    index:
+      title: Quartos
+      new: Novo Quarto
+      description: Descrição
+      location: Localização
+      room_title: Título
+
+  links:
+    back: Voltar
+    home: Página inicial
+    edit: Editar
+    show: Ver
+    destroy: Apagar
+
+  layout:
+    rooms: Quartos
+    singup: Cadastro
+
+  general:
+    form_error: Há erros no formulário, por favor verifique.
+
+  activerecord:
+    models:
+      user: Usuário
+      room: Quarto
+    attributes:
+      user:
+        bio: Biografia
+        email: Email
+        full_name: Nome completo
+        location: Localização
+        password: Senha
+        password_confirmation: Confirme sua senha
+      room:
+        description: Descrição
+        location: Localização
+        title: Título

@@ -1,7 +1,7 @@
 <%= form_for(user) do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> no formulário, por favor verifique.</h2>
+      <%= t 'general.form_error' %>
     </div>
   <% end %>
 
