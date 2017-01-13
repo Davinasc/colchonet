@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 	before_save :downcase_email
-
+	before_create :generate_token
 
 	validates_presence_of :full_name, :location
 	validates :bio, length: { minimum: 30 }, allow_blank: false
@@ -11,6 +11,24 @@ class User < ApplicationRecord
 					  uniqueness: { case_sensitive: false }
 
 	has_secure_password
+
+	
+
+	def generate_token
+		self.confirmation_token = SecureRandom.urlsafe_base64
+	end
+
+	def confirm!
+		return if confirmed?
+
+		self.confirmed_at = Time.current
+		self.confirmation_token = ''
+		save!
+	end
+
+	def confirmed?
+		confirmed_at.present?		
+	end
 
 	private
 
