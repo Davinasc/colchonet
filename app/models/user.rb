@@ -2,6 +2,8 @@ class User < ApplicationRecord
 	before_save :downcase_email
 	before_create :generate_token
 
+	scope :confirmed, -> { where('confirmed_at IS NOT NULL') }
+
 	validates_presence_of :full_name, :location
 	validates :bio, length: { minimum: 30 }, allow_blank: false
 
@@ -28,6 +30,11 @@ class User < ApplicationRecord
 
 	def confirmed?
 		confirmed_at.present?		
+	end
+
+	def self.authenticate(email, password)
+		#confirmed vem do escopo de busca
+		confirmed.find_by_email(email).try(:authenticate, password)
 	end
 
 	private
