@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:edit, :update, :destroy]
   before_action :require_authentication, only: [:new, :create, :edit, :update, :destroy]
 
-  PER_PAGE = 1
+  PER_PAGE = 10
 
   def index
     @search_query = params[:q]
@@ -54,6 +54,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:title, :location, :description)
+      params.require(:room).permit(:title, :location, :description, :picture)
     end
 end

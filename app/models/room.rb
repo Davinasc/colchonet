@@ -8,6 +8,8 @@ class Room < ApplicationRecord
 	scope :most_recent, -> { order('created_at DESC') }
 
 	validates_presence_of :title, :slug
+
+	mount_uploader :picture, PictureUploader
 	friendly_id :title, use: [:slugged, :history]
 
 	def complete_name

@@ -1,6 +1,7 @@
 @import "shadow";
 
 .room {
+	min-height: 150px;
 	background-color: white;
 	padding: 20px 25px;
 	margin-top: 10px;
@@ -93,4 +94,9 @@
 	font-size: inherit;
 	font-weight: inherit;
 	background-color: gold;
+}
+
+.room img {
+	float: left;
+	margin-right: 10px;
 }

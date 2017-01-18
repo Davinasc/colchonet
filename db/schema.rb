@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118180017) do
+ActiveRecord::Schema.define(version: 20170118191030) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170118180017) do
     t.integer  "users_id"
     t.integer  "reviews_count"
     t.string   "slug"
+    t.string   "picture"
     t.index ["slug"], name: "index_rooms_on_slug", unique: true
     t.index ["users_id"], name: "index_rooms_on_users_id"
   end
