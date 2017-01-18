@@ -19,6 +19,9 @@ pt-BR:
       full_name: Nome
       location: Localização
 
+  dialogs:
+    destroy: Você tem certeza que quer remover?
+
   rooms:
     new:
       title: Cadastro
@@ -30,11 +33,17 @@ pt-BR:
       location: "Localização: %{location}"
       description: "Descrição: %{description}"
     index:
-      title: Quartos
-      new: Novo Quarto
-      description: Descrição
-      location: Localização
-      room_title: Título
+      title: Quartos Disponíveis
+    room:
+      owner_html: '&mdash; %{owner} (%{when})'
+      edit: 'Editar'
+      destroy: 'Remover'
+    review:
+      login_to_review: 'Faça o login para avaliar quartos'
+      stats:
+        zero: 'Não há avaliações'
+        one: '%{average}/%{max} (1 avaliação)'
+        other: '%{average}/%{max} (%{count} avaliações)'
 
   user_sessions:
     new:
@@ -98,6 +107,7 @@ pt-BR:
     models:
       user: Usuário
       room: Quarto
+      review: Avaliação
     attributes:
       user:
         bio: Biografia

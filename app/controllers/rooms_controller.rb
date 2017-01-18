@@ -1,23 +1,28 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_room, only: [:edit, :update, :destroy]
   before_action :require_authentication, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @rooms = Room.all
+    @rooms = Room.most_recent.map do |room|
+      # Não exibiremos o formulário na listagem
+      RoomPresenter.new(room, self, false)
+    end
   end
 
   def show
+    room_model = Room.find(params[:id])
+    @room = RoomPresenter.new(room_model, self)
   end
 
   def new
-    @room = Room.new
+    @room = current_user.rooms.build
   end
 
   def edit
   end
 
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.new(room_params)
       if @room.save
         redirect_to @room, notice: 'Room was successfully created.' 
       else
@@ -39,9 +44,9 @@ class RoomsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_room
-      @room = Room.find(params[:id])
+      @room = current_user.rooms.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

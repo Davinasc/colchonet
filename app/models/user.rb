@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+	has_many :rooms, dependent: :destroy
+	has_many :reviews, dependent: :destroy
+
 	before_save :downcase_email
 	before_create :generate_token
 
